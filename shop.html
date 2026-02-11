@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Merchant's Store | Totnes Hobby Tavern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --wood-dark: #1a0f0a;
+            --parchment: #f4e4bc;
+            --ink: #3d2b1f;
+            --ember: #c66b2d;
+            --iron: #4a3728;
+            --gold: #d4af37;
+            --glow-orange: rgba(198, 107, 45, 0.8);
+        }
+
+        body {
+            background-image: url("edited-photo (1).png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center;
+            background-color: var(--wood-dark); 
+            color: var(--parchment);
+            margin: 0;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
+        }
+
+        header {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .header-logo {
+            width: 150px; height: 150px; border-radius: 50%; 
+            object-fit: cover; border: 6px solid var(--iron); 
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900; font-size: 3.5em;
+            color: var(--ember); text-shadow: 3px 3px 0px #000;
+        }
+
+        nav {
+            display: flex; justify-content: space-between;
+            width: 100%; max-width: 900px; margin: 20px 0 40px 0; gap: 10px;
+        }
+
+        .nav-btn {
+            background: var(--iron); border: 3px solid #5d4037;
+            color: var(--parchment); flex: 1; padding: 15px 5px;
+            text-decoration: none; text-align: center; font-size: 0.9em;
+            font-weight: bold; text-transform: uppercase;
+            font-family: 'Cinzel Decorative', serif; transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover { background: var(--ember); box-shadow: 0 0 15px var(--glow-orange); }
+        .nav-btn.active { border-color: var(--gold); background: var(--wood-dark); color: var(--gold); }
+
+        .store-intro {
+            background-color: #e8d5b5; 
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); 
+            color: var(--ink); width: 100%; max-width: 800px;
+            padding: 40px; border: 8px solid var(--gold);
+            text-align: center; margin-top: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+        }
+
+        .store-intro h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2.2em; border-bottom: 2px solid var(--gold);
+            padding-bottom: 15px; margin-bottom: 25px;
+        }
+
+        .portal-btn {
+            display: inline-block;
+            background: var(--ember);
+            color: white;
+            padding: 30px 60px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900;
+            font-size: 1.8em;
+            border: 5px solid var(--gold);
+            box-shadow: 0 0 25px var(--glow-orange);
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+        }
+
+        /* UPDATED MUSIC PANEL STYLE */
+        .music-panel { 
+            position: fixed; 
+            bottom: 20px; 
+            left: 20px; 
+            z-index: 100;
+            background: rgba(26, 15, 10, 0.95);
+            border: 2px solid var(--gold);
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            min-width: 160px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        #musicToggle {
+            background: var(--iron); 
+            color: var(--parchment); 
+            border: 1px solid var(--gold); 
+            padding: 8px; 
+            cursor: pointer;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.8em;
+            transition: all 0.3s ease;
+        }
+
+        #musicToggle:hover { background: var(--ember); }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--gold);
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 0.7em;
+        }
+
+        #volumeSlider {
+            width: 100px;
+            cursor: pointer;
+            accent-color: var(--gold);
+        }
+
+        /* Modal & Particles (Kept from original) */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); }
+        .modal-content { background: linear-gradient(135deg, #1a0f0a 0%, #2d1810 100%); border: 8px solid var(--gold); position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 90%; max-width: 600px; padding: 40px; text-align: center; }
+        .modal-btn { padding: 15px 30px; font-family: 'Cinzel Decorative', serif; border: 3px solid var(--gold); cursor: pointer; text-transform: uppercase; }
+        .modal-btn-visit { background: var(--ember); color: white; text-decoration: none; display: inline-block; }
+        .particle { position: fixed; pointer-events: none; font-size: 1.5em; z-index: 999; }
+        @keyframes sparkle { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--tx), var(--ty)) scale(0.3); } }
+        .particle.spark { animation: sparkle 1s ease-out forwards; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Store_logo.png" alt="Totnes Hobby Tavern Logo" class="header-logo">
+        <h1>Merchant's Store</h1>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-btn">The Hub</a>
+        <a href="shop.html" class="nav-btn active">Merchant's Store</a>
+        <a href="about.html" class="nav-btn">About Us</a>
+        <a href="frost-wardens.html" class="nav-btn">Frost Wardens</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
+
+    <main class="store-intro">
+        <h2>Treasures of the Tavern</h2>
+        <p>Welcome, traveler. Our inventory is constantly shifting as new loot is unearthed from the depths of the warp.</p>
+        <div class="portal-container">
+            <button id="ebayModalBtn" class="portal-btn">Enter the eBay Store</button>
+        </div>
+        <p class="disclaimer">"Direct from the Tavern Master to your tabletop."</p>
+    </main>
+
+    <div id="ebayModal" class="modal">
+        <div class="modal-content">
+            <h2>The eBay Stronghold</h2>
+            <p>Visit our official eBay store to browse our curated collection.</p>
+            <div class="modal-btn-group">
+                <a href="https://www.ebay.co.uk/usr/totnes_hobby_tavern" target="_blank" class="modal-btn modal-btn-visit">Enter Store</a>
+                <button id="closeModalBtn" class="modal-btn" style="background:transparent; color:white;">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="music-panel">
+        <button id="musicToggle">🔊 PLAY TAVERN MUSIC</button>
+        <div class="volume-container">
+            <span>VOL</span>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+        </div>
+    </div>
+
+    <audio id="tavernAudio" loop><source src="Tavern.mp3.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        const audio = document.getElementById('tavernAudio');
+        const btn = document.getElementById('musicToggle');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        // Music Logic
+        audio.volume = 0.5;
+        btn.addEventListener('click', () => {
+            if (audio.paused) { audio.play(); btn.innerHTML = "🔇 MUTE MUSIC"; }
+            else { audio.pause(); btn.innerHTML = "🔊 PLAY TAVERN MUSIC"; }
+        });
+
+        // Volume Logic
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Particle Effect
+        function createSparkles(button) {
+            const rect = button.getBoundingClientRect();
+            for (let i = 0; i < 3; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle', 'spark');
+                particle.textContent = Math.random() > 0.5 ? '🪙' : '✨';
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 60 + Math.random() * 40;
+                particle.style.left = (rect.left + rect.width / 2) + 'px';
+                particle.style.top = (rect.top + rect.height / 2) + 'px';
+                particle.style.setProperty('--tx', Math.cos(angle) * distance + 'px');
+                particle.style.setProperty('--ty', Math.sin(angle) * distance + 'px');
+                document.body.appendChild(particle);
+                setTimeout(() => particle.remove(), 1000);
+            }
+        }
+
+        const portalBtn = document.getElementById('ebayModalBtn');
+        let sparkleInterval;
+        portalBtn.addEventListener('mouseenter', () => {
+            createSparkles(portalBtn);
+            sparkleInterval = setInterval(() => createSparkles(portalBtn), 150);
+        });
+        portalBtn.addEventListener('mouseleave', () => clearInterval(sparkleInterval));
+
+        // Modal Logic
+        const modal = document.getElementById('ebayModal');
+        document.getElementById('ebayModalBtn').onclick = () => modal.style.display = "block";
+        document.getElementById('closeModalBtn').onclick = () => modal.style.display = "none";
+        window.onclick = (event) => { if (event.target == modal) modal.style.display = "none"; }
+    </script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Frost Wardens | Totnes Hobby Tavern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --ice-white: #f0faff;
+            --glacier-blue: #a3daff;
+            --deep-freeze: #1a365d;
+            --rune-glow: #00d4ff;
+            --iron-cold: #2d3748;
+        }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('Winterbackground.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            color: var(--ice-white);
+            margin: 0;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            
+            /* ADDED GAUNTLET CURSOR */
+            cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
+        }
+
+        /* Ensure interactive elements also use the gauntlet or the pointer version */
+        a, button, input[type=range], .nav-btn {
+            cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), pointer !important;
+        }
+
+        /* HEADER SECTION */
+        header {
+            width: 100%;
+            padding: 80px 0 100px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(8px);
+            border-bottom: 2px solid var(--glacier-blue);
+            position: relative;
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 4.5em;
+            color: white;
+            text-shadow: 0 0 25px var(--rune-glow);
+            margin: 0;
+            letter-spacing: 8px;
+        }
+
+        header .icicles-wrap {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background-image: url('Icicles.png');
+            background-repeat: repeat-x;
+            background-size: contain; 
+            pointer-events: none;
+            z-index: 10;
+            filter: drop-shadow(0px 5px 5px rgba(0,0,0,0.3));
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 60px 0;
+            width: 95%;
+            max-width: 1100px;
+        }
+
+        .nav-btn {
+            background: rgba(26, 54, 93, 0.85);
+            border: 2px solid var(--glacier-blue);
+            color: white;
+            padding: 15px 30px 25px 30px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            font-size: 1em;
+            position: relative;
+            transition: all 0.3s ease;
+            overflow: visible;
+        }
+
+        .nav-btn .btn-icicles {
+            position: absolute;
+            bottom: -15px;
+            left: -1px;
+            right: -1px;
+            height: 20px;
+            background-image: url('Icicles.png');
+            background-repeat: repeat-x;
+            background-size: contain;
+            pointer-events: none;
+        }
+
+        .nav-btn:hover {
+            background: var(--glacier-blue);
+            color: var(--deep-freeze);
+            box-shadow: 0 0 20px var(--rune-glow);
+            transform: translateY(-3px);
+        }
+
+        /* LORE CONTENT AREA */
+        .lore-scroll {
+            background: rgba(5, 15, 25, 0.9);
+            border: 3px solid var(--glacier-blue);
+            padding: 60px;
+            max-width: 850px;
+            margin-bottom: 80px;
+            box-shadow: 0 0 50px rgba(0, 212, 255, 0.15);
+            line-height: 1.9;
+        }
+
+        .story-img {
+            width: 100%;
+            margin: 30px 0;
+            border: 2px solid var(--glacier-blue);
+            position: relative;
+        }
+
+        .story-img img { width: 100%; display: block; opacity: 0.9; }
+
+        .image-caption {
+            background: var(--deep-freeze);
+            padding: 10px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--glacier-blue);
+            text-align: center;
+        }
+
+        /* MUSIC PANEL & VOLUME BAR */
+        .music-panel {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(26, 54, 93, 0.9);
+            padding: 15px;
+            border: 1px solid var(--glacier-blue);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+        }
+
+        #musicToggle {
+            background: var(--deep-freeze);
+            color: white;
+            border: 1px solid var(--glacier-blue);
+            padding: 8px 15px;
+            font-family: 'Cinzel Decorative', serif;
+            width: 100%;
+        }
+
+        .volume-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+        }
+
+        input[type=range] {
+            width: 100px;
+            accent-color: var(--rune-glow);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FROST WARDENS</h1>
+        <p style="font-family: 'Cinzel Decorative'; letter-spacing: 3px; color: var(--glacier-blue);">STRANDED GUARDIANS OF THE PERMAFROST</p>
+        <div class="icicles-wrap"></div>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-btn">The Hub <div class="btn-icicles"></div></a>
+        <a href="shop.html" class="nav-btn">Merchant <div class="btn-icicles"></div></a>
+        <a href="about.html" class="nav-btn">About Us <div class="btn-icicles"></div></a>
+        <a href="frost-wardens.html" class="nav-btn active">The Lore <div class="btn-icicles"></div></a>
+        <a href="contact.html" class="nav-btn">Contact <div class="btn-icicles"></div></a>
+    </nav>
+
+    <main class="lore-scroll">
+        <h2>The Great Exile</h2>
+        <p>In the silence of the permafrost, the only sound is the grinding of ice and the hum of dying power packs. When the Strike Cruiser <em>Glacial Wrath</em> was spat out by the Warp, the Grey Knights aboard didn't find a battlefield—they found a tomb.</p>
+
+        <div class="story-img">
+            <img src="ship_crash.jpg" alt="Crashed Strike Cruiser">
+            <div class="image-caption">The wreck of the Glacial Wrath, half-buried in the tundra.</div>
+        </div>
+
+        <h2>Adapt or Perish</h2>
+        <p>With no contact from Titan and the Imperium out of reach, the Wardens faced a choice: freeze in their gleaming silver armor or adapt to the world that claimed them. They looked to the wild beasts of the ice—the <strong>Permafrost Reptilians</strong>.</p>
+        
+        <div class="story-img">
+            <img src="ice_beast.jpg" alt="Permafrost Apex Predator">
+            <div class="image-caption">The Apex Predators of the Permafrost.</div>
+        </div>
+
+        <p>Hunting these titans became a necessity. The knights learned to carve psychic runes into the creature's bones, using them as focus points for their powers. They draped the thick, frost-resistant scales over their ceramite, creating a new form of armor that could withstand the absolute zero temperatures.</p>
+
+        <div class="story-img">
+            <img src="rune_craft.jpg" alt="Grey Knight Carving Rune">
+            <div class="image-caption">Brother-Chaplain Valerius carving the first protective runes into bone.</div>
+        </div>
+
+        <h2>The Hunt Continues</h2>
+        <p>Now, they are no longer just Grey Knights. They are the Wardens of the Frost. They hunt the shadows in the blizzard, their eyes glowing with cold psychic fire, waiting for the day the Imperium finds them—or the day the ice finally takes them all.</p>
+
+        <div class="story-img">
+            <img src="frost_warden_squad.jpg" alt="Frost Wardens Squad">
+            <div class="image-caption">The First Company walking away from the crash site into the eternal white.</div>
+        </div>
+        
+        <p style="text-align: center; margin-top: 50px; font-family: 'Cinzel Decorative'; color: var(--rune-glow); font-size: 1.4em;">
+            <em>"Ice in the blood. Fire in the soul."</em>
+        </p>
+    </main>
+
+    <div class="music-panel">
+        <button id="musicToggle">🔊 PLAY</button>
+        <div class="volume-container">
+            <span>❄️</span>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+        </div>
+    </div>
+
+    <audio id="tavernAudio" loop><source src="Blizzard.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        const audio = document.getElementById('tavernAudio');
+        const btn = document.getElementById('musicToggle');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        audio.volume = 0.5;
+
+        btn.addEventListener('click', () => {
+            if (audio.paused) { 
+                audio.play(); 
+                btn.innerHTML = "🔇 MUTE"; 
+            } else { 
+                audio.pause(); 
+                btn.innerHTML = "🔊 PLAY"; 
+            }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+    </script>
+</body>
+</html>

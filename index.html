@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Totnes Hobby Tavern | The Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --wood-dark: #1a0f0a;
+            --parchment: #f4e4bc;
+            --ink: #3d2b1f;
+            --ember: #c66b2d;
+            --iron: #4a3728;
+            --glow-orange: rgba(198, 107, 45, 0.8);
+        }
+
+        body {
+            background-image: url("edited-photo (1).png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center;
+            background-color: var(--wood-dark); 
+            color: var(--parchment);
+            margin: 0;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            /* GAUNTLET CURSOR */
+            cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
+        }
+
+        /* HEADER SECTION */
+        header {
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900; 
+            font-size: 4em;
+            color: var(--ember);
+            /* Heavy text shadow for readability */
+            text-shadow: 4px 4px 8px #000, 0px 0px 15px rgba(0,0,0,0.8);
+            margin: 10px 0;
+        }
+
+        /* THE WELCOME SCROLL WITH SHADOWS */
+        .welcome-scroll {
+            max-width: 650px;
+            margin: 20px auto 40px auto;
+            padding: 30px;
+            /* Semi-transparent dark background with a blur effect */
+            background: rgba(26, 15, 10, 0.85); 
+            backdrop-filter: blur(5px);
+            border-left: 4px solid var(--ember);
+            border-right: 4px solid var(--ember);
+            border-top: 1px solid rgba(198, 107, 45, 0.3);
+            border-bottom: 1px solid rgba(198, 107, 45, 0.3);
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--parchment);
+            line-height: 1.6;
+            /* Box Shadow to make the whole section pop */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.9), inset 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        .welcome-scroll p {
+            margin: 15px 0;
+            font-size: 1.2em;
+            /* Text Shadow for every word */
+            text-shadow: 2px 2px 4px #000;
+        }
+
+        .header-logo {
+            display: block;
+            margin: 0 auto 40px auto; 
+            width: 200px; 
+            height: 200px; 
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 8px solid var(--iron); 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+        }
+
+        /* SIGNPOST SYSTEM */
+        .signpost {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 400px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .signpost::before {
+            content: "";
+            display: block;
+            width: 110%;
+            height: 25px;
+            background: #3d2b1f; 
+            border: 2px solid #2a1b12;
+            border-radius: 5px;
+            margin-bottom: 60px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.8);
+            z-index: 20; 
+        }
+
+        .sign-wrapper {
+            position: relative;
+            width: 100%;
+            margin-bottom: 80px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .chains {
+            position: absolute;
+            top: -105px;
+            width: 100%;
+            height: 140px;
+            pointer-events: none; 
+            z-index: 1; 
+        }
+
+        .chains::before, .chains::after {
+            content: "";
+            position: absolute;
+            width: 2px;
+            height: 100%;
+            border-left: 6px dotted #111;
+            left: 40px;
+        }
+
+        .chains::after { left: auto; right: 40px; }
+
+        .sign-wrapper.about .chains::after { display: none; }
+        .sign-wrapper.about .chains::before {
+            left: 50%;
+            transform: translateX(-50%);
+            top: 20px;
+            height: 90px;
+        }
+
+        .tavern-btn {
+            background: var(--iron);
+            border: 4px solid #5d4037;
+            color: var(--parchment);
+            width: 100%;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-align: center;
+            font-size: 1.4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Cinzel Decorative', serif;
+            position: relative; 
+            z-index: 10; 
+            transform-origin: top center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            transition: all 0.3s;
+            animation: tavernSwing 5s ease-in-out infinite;
+            cursor: inherit;
+        }
+
+        .tavern-btn:hover {
+            background: var(--ember);
+            color: #fff;
+            box-shadow: 0 0 25px 5px var(--glow-orange);
+        }
+
+        @keyframes tavernSwing {
+            0% { transform: rotate(2deg); }
+            50% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+
+        .sign-wrapper:nth-child(2) .tavern-btn { animation-delay: 0.5s; }
+        .sign-wrapper:nth-child(3) .tavern-btn { animation-delay: 1s; }
+        .sign-wrapper:nth-child(4) .tavern-btn { animation-delay: 1.5s; }
+
+        /* MUSIC PANEL */
+        .music-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--iron);
+            border: 2px solid var(--ember);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        #musicToggle {
+            background: var(--wood-dark);
+            color: var(--parchment);
+            border: 1px solid var(--ember);
+            padding: 5px 10px;
+            font-family: 'Cinzel Decorative', serif;
+            cursor: inherit;
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="tavernAudio" loop>
+        <source src="Tavern.mp3.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-panel">
+        <button id="musicToggle">🔊 Play Music</button>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5" style="width: 100px; cursor: inherit;">
+    </div>
+
+    <header>
+        <h1>Totnes Hobby Tavern</h1>
+        
+        <div class="welcome-scroll">
+            <p>Halt, Traveler! You have found the only sanctuary in Totnes where the hearth is always warm and the dice are always rolling.</p>
+            <p>Whether you seek to command legions of plastic warriors, hunt for the rarest pocket-monster scrolls, or forge your own legends through the magic of 3D alchemy—your quest begins here.</p>
+        </div>
+
+        <img src="Store_logo.png" alt="Totnes Hobby Tavern Logo" class="header-logo">
+    </header>
+
+    <div class="signpost">
+        <div class="sign-wrapper about">
+            <div class="chains"></div>
+            <a href="about.html" class="tavern-btn">About The Tavern</a>
+        </div>
+
+        <div class="sign-wrapper">
+            <div class="chains"></div>
+            <a href="shop.html" class="tavern-btn">The Merchant's Store</a>
+        </div>
+
+        <div class="sign-wrapper">
+            <div class="chains"></div>
+            <a href="frost-wardens.html" class="tavern-btn" style="border-color: #4db8ff; color: #d1e8ff;">Sagas of the Frost Wardens</a>
+        </div>
+
+        <div class="sign-wrapper">
+            <div class="chains"></div>
+            <a href="contact.html" class="tavern-btn">Get in Touch</a>
+        </div>
+    </div>
+
+    <script>
+        const audio = document.getElementById('tavernAudio');
+        const btn = document.getElementById('musicToggle');
+        const volume = document.getElementById('volumeControl');
+
+        audio.volume = 0.5;
+
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "🔇 Mute Music";
+            } else {
+                audio.pause();
+                btn.innerHTML = "🔊 Play Music";
+            }
+        });
+
+        volume.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        document.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    btn.innerHTML = "🔇 Mute Music";
+                }).catch(() => {});
+            }
+        }, { once: true });
+    </script>
+
+</body>
+</html>

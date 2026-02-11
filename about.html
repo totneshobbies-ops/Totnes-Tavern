@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | Totnes Hobby Tavern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --wood-dark: #1a0f0a;
+            --parchment: #f4e4bc;
+            --ink: #3d2b1f;
+            --ember: #c66b2d;
+            --iron: #4a3728;
+            --gold: #d4af37;
+            --glow-orange: rgba(198, 107, 45, 0.8);
+        }
+
+        body {
+            background-image: url("edited-photo (1).png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center;
+            background-color: var(--wood-dark); 
+            color: var(--parchment);
+            margin: 0;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
+        }
+
+        /* HEADER SECTION */
+        header {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .header-logo {
+            width: 150px; 
+            height: 150px; 
+            border-radius: 50%; 
+            object-fit: cover;
+            border: 6px solid var(--iron); 
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900; 
+            font-size: 3.5em;
+            color: var(--ember);
+            text-shadow: 3px 3px 0px #000;
+            margin: 5px 0;
+        }
+
+        /* TOP NAVIGATION BAR */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 900px;
+            margin: 20px 0 40px 0;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            background: var(--iron);
+            border: 3px solid #5d4037;
+            color: var(--parchment);
+            flex: 1;
+            padding: 15px 5px;
+            text-decoration: none;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-family: 'Cinzel Decorative', serif;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
+            cursor: inherit;
+        }
+
+        .nav-btn:hover {
+            background: var(--ember);
+            color: white;
+            box-shadow: 0 0 15px var(--glow-orange);
+            transform: translateY(-2px);
+        }
+
+        .nav-btn.active {
+            border-color: var(--gold);
+            background: var(--wood-dark);
+            color: var(--gold);
+        }
+
+        /* THE PARCHMENT BOX */
+        .content-box {
+            background-color: #e8d5b5; 
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); 
+            color: var(--ink);
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            box-sizing: border-box;
+            border: 10px solid var(--gold); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 50px rgba(0,0,0,0.1);
+            position: relative;
+            line-height: 1.6;
+            margin-bottom: 50px;
+        }
+
+        .content-box h2 {
+            font-family: 'Cinzel Decorative', serif;
+            text-align: center;
+            color: #5e3a24;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .content-box p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        blockquote {
+            border-left: 4px solid var(--ember);
+            margin: 1.5em 10px;
+            padding: 0.5em 10px;
+            font-family: 'Cinzel Decorative', serif;
+            font-style: italic;
+        }
+
+        /* SOCIALS GRID */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-btn {
+            display: block;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            font-size: 0.8em;
+            color: var(--parchment);
+            background: var(--iron);
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--ember);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* MAP STYLING */
+        .map-container {
+            margin-top: 20px;
+            border: 5px solid var(--gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* MUSIC PANEL */
+        .music-panel {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--iron);
+            border: 2px solid var(--gold);
+            padding: 10px;
+            z-index: 100;
+            font-family: 'Cinzel Decorative', serif;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        #musicToggle {
+            background: var(--wood-dark);
+            color: var(--parchment);
+            border: 1px solid var(--gold);
+            padding: 5px 10px;
+            cursor: inherit;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Store_logo.png" alt="Totnes Hobby Tavern Logo" class="header-logo">
+        <h1>About Us</h1>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-btn">The Hub</a>
+        <a href="shop.html" class="nav-btn">Merchant's Store</a>
+        <a href="about.html" class="nav-btn active">About Us</a>
+        <a href="frost-wardens.html" class="nav-btn">Frost Wardens</a>
+        <a href="contact.html" class="nav-btn">Contact</a>
+    </nav>
+
+    <main class="content-box">
+        <section class="tavern-tale">
+            <h2>The Saga of the Tavern</h2>
+            <p>
+                Every great odyssey begins with a single spark. For the Tavern, that spark was struck years ago in the quiet corners of a private collection. What began as a humble endeavor—the trading of duplicate <strong>Pokémon scrolls</strong>—soon ignited into a grand vision for a sanctuary. 
+            </p>
+            <p>
+                Like a small flame growing into a roaring hearth, the Tavern expanded its horizons. We no longer just trade in cards; we provide the steel and sorcery for every traveler's journey. From the battlefields of <strong>Wargaming</strong> to the realms of <strong>Dungeons & Dragons</strong>, we supply the miniatures, hobby paints, and <strong>TCGs</strong> required to forge your destiny.
+            </p>
+        </section>
+
+        <hr style="border: 0; height: 1px; background: var(--gold); margin: 40px 0;">
+
+        <section class="tavern-halls">
+            <h2>The Great Halls of Strategy</h2>
+            <p>
+                A traveler cannot wander forever; every fellowship needs a place to rest their boots and sharpen their blades. Within the Tavern walls, we have raised <strong>Great Halls of Strategy</strong>—dedicated tables where generals lead armies to glory and parties map out their next dungeon crawl.
+            </p>
+            <p>
+                Should you seek a sanctuary for your <strong>DnD</strong> campaign or a fortified position for <strong>Wargaming</strong>, our tables are available for hire. Secure your place in history by claiming a seat at our hearth. 
+            </p>
+            <p style="text-align: center; font-style: italic; color: #5e3a24;">
+                "Draw your chair, unroll your maps, and let the dice decide your fate."
+            </p>
+        </section>
+
+        <hr style="border: 0; height: 1px; background: var(--gold); margin: 40px 0;">
+
+        <section class="tavern-master">
+            <h2>Meet the Tavern Master</h2>
+            <p>
+                Behind the counter sits <strong>Tommy</strong>, the keeper of this realm. A veteran of a thousand tabletop wars and a seeker of the rarest holos, Tommy’s passion was forged in the fires of his youth. 
+            </p>
+            <p>
+                From his earliest days, he was captivated by the strategic depth of <strong>Warhammer</strong>, the storytelling of <strong>DnD</strong>, and the thrill of the <strong>Pokémon</strong> hunt. Today, he translates that lifelong obsession into the Totnes Hobby Tavern—a place where beginners are welcomed as heroes.
+            </p>
+            <blockquote>
+                "I didn't just want to build a shop; I wanted to build the headquarters for every adventure in Totnes." — Tommy
+            </blockquote>
+        </section>
+
+        <hr style="border: 0; height: 1px; background: var(--gold); margin: 40px 0;">
+
+        <section class="tavern-socials">
+            <h2>Follow the Messenger Ravens</h2>
+            <div class="social-grid">
+                <a href="https://www.facebook.com/profile.php?id=61582645042360" class="social-btn" target="_blank" rel="noopener">Facebook</a>
+                <a href="https://www.youtube.com/@TotnesHobbyTavern" class="social-btn" target="_blank" rel="noopener">YouTube</a>
+                <a href="https://discord.gg/HUVwSsPY" class="social-btn" target="_blank" rel="noopener">Discord</a>
+                <a href="#" class="social-btn">Instagram</a>
+            </div>
+        </section>
+
+        <hr style="border: 0; height: 1px; background: var(--gold); margin: 40px 0;">
+
+        <section class="tavern-location">
+            <h2>The Secret Map to the Tavern</h2>
+            <p style="text-align: center; font-style: italic;">
+                Our physical stronghold is currently being forged in the heart of Totnes. Check back soon for the coordinates of our new headquarters!
+            </p>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d10113.344400508544!2d-3.696144577881045!3d50.43120194602927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486d1ce9047933d7%3A0x19bff23b32b27700!2sTotnes!5e0!3m2!1sen!2suk!4v1700000000000!5m2!1sen!2suk" 
+                    width="100%" 
+                    height="350" 
+                    style="border:0;" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+            </div>
+        </section>
+    </main>
+
+    <div class="music-panel">
+        <button id="musicToggle">🔊 Play Ambience</button>
+        <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5" style="width: 100px;">
+    </div>
+
+    <audio id="tavernAudio" loop>
+        <source src="Tavern.mp3.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const audio = document.getElementById('tavernAudio');
+        const btn = document.getElementById('musicToggle');
+        const volume = document.getElementById('volumeControl');
+
+        audio.volume = 0.5;
+
+        btn.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "🔇 Mute";
+            } else {
+                audio.pause();
+                btn.innerHTML = "🔊 Play";
+            }
+        });
+
+        volume.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Safety net to start music on first user interaction
+        document.addEventListener('click', () => {
+            if (audio.paused) {
+                audio.play().then(() => {
+                    btn.innerHTML = "🔇 Mute";
+                }).catch(e => console.log("Audio waiting for interaction"));
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send a Raven | Totnes Hobby Tavern</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --wood-dark: #1a0f0a;
+            --parchment: #f4e4bc;
+            --ink: #3d2b1f;
+            --ember: #c66b2d;
+            --iron: #4a3728;
+            --gold: #d4af37;
+            --glow-orange: rgba(198, 107, 45, 0.8);
+        }
+
+        body {
+            background-image: url("edited-photo (1).png"); 
+            background-size: cover; 
+            background-attachment: fixed; 
+            background-position: center;
+            background-color: var(--wood-dark); 
+            color: var(--parchment);
+            margin: 0;
+            font-family: 'Georgia', serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            cursor: url('https://cur.cursors-4u.net/games/gam-4/gam372.cur'), auto;
+        }
+
+        header {
+            width: 100%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .header-logo {
+            width: 150px; height: 150px; border-radius: 50%; 
+            object-fit: cover; border: 6px solid var(--iron); 
+            box-shadow: 0 0 20px rgba(0,0,0,0.5); margin-bottom: 10px;
+        }
+
+        header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 900; font-size: 3.5em;
+            color: var(--ember); text-shadow: 3px 3px 0px #000;
+        }
+
+        nav {
+            display: flex; justify-content: space-between;
+            width: 100%; max-width: 900px; margin: 20px 0 40px 0; gap: 10px;
+        }
+
+        .nav-btn {
+            background: var(--iron); border: 3px solid #5d4037;
+            color: var(--parchment); flex: 1; padding: 15px 5px;
+            text-decoration: none; text-align: center; font-size: 0.9em;
+            font-weight: bold; text-transform: uppercase;
+            font-family: 'Cinzel Decorative', serif; transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover { background: var(--ember); box-shadow: 0 0 15px var(--glow-orange); }
+        .nav-btn.active { border-color: var(--gold); background: var(--wood-dark); color: var(--gold); }
+
+        /* CONTACT FORM CONTAINER */
+        .scroll-container {
+            background-color: #e8d5b5; 
+            background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png"); 
+            color: var(--ink); width: 100%; max-width: 700px;
+            padding: 50px; border: 8px solid var(--gold);
+            margin-top: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
+            position: relative;
+        }
+
+        .scroll-container h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2em; border-bottom: 2px solid var(--gold);
+            padding-bottom: 15px; margin-bottom: 30px; text-align: center;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .input-group input, .input-group textarea {
+            background: rgba(255, 255, 255, 0.4);
+            border: 2px solid var(--iron);
+            padding: 12px;
+            font-family: 'Georgia', serif;
+            font-size: 1.1em;
+            color: var(--ink);
+            border-radius: 3px;
+        }
+
+        .input-group input:focus, .input-group textarea:focus {
+            outline: none;
+            border-color: var(--ember);
+            background: rgba(255, 255, 255, 0.6);
+        }
+
+        .submit-btn {
+            background: var(--ember);
+            color: white;
+            border: 3px solid var(--gold);
+            padding: 20px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-btn:hover {
+            background: var(--gold);
+            color: var(--wood-dark);
+            box-shadow: 0 0 20px var(--glow-orange);
+        }
+
+        /* TAVERN LOCATION MAP AREA */
+        .location-info {
+            margin-top: 40px;
+            text-align: center;
+            color: var(--parchment);
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 250px;
+            background: var(--iron);
+            border: 3px solid var(--gold);
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cinzel Decorative', serif;
+            opacity: 0.8;
+        }
+
+        /* MUSIC PANEL */
+        .music-panel { 
+            position: fixed; bottom: 20px; left: 20px; z-index: 100;
+            background: rgba(26, 15, 10, 0.95); border: 2px solid var(--gold);
+            padding: 15px; display: flex; flex-direction: column; gap: 12px;
+            min-width: 160px; box-shadow: 0 0 20px rgba(0,0,0,0.8);
+        }
+
+        #musicToggle {
+            background: var(--iron); color: var(--parchment); border: 1px solid var(--gold); 
+            padding: 8px; cursor: pointer; font-family: 'Cinzel Decorative', serif;
+            font-size: 0.8em;
+        }
+
+        .volume-container { display: flex; align-items: center; gap: 10px; color: var(--gold); font-size: 0.7em; }
+        #volumeSlider { width: 100px; accent-color: var(--gold); }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="Store_logo.png" alt="Totnes Hobby Tavern Logo" class="header-logo">
+        <h1>Contact the Tavern</h1>
+    </header>
+
+    <nav>
+        <a href="index.html" class="nav-btn">The Hub</a>
+        <a href="shop.html" class="nav-btn">Merchant's Store</a>
+        <a href="about.html" class="nav-btn">About Us</a>
+        <a href="frost-wardens.html" class="nav-btn">Frost Wardens</a>
+        <a href="contact.html" class="nav-btn active">Contact</a>
+    </nav>
+
+    <main class="scroll-container">
+        <h2>Send a Raven</h2>
+        
+        <form class="contact-form" action="https://formsubmit.co/totneshobbies@gmail.com" method="POST">
+            <!-- required hidden fields for FormSubmit.co -->
+            <input type="hidden" name="_subject" value="New message from Totnes Hobby Tavern contact form">
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
+            <div class="input-group">
+                <label>Your Name / Title</label>
+                <input name="name" type="text" placeholder="e.g. Lord Inquisitor of Totnes" required>
+            </div>
+
+            <div class="input-group">
+                <label>Return Address (Email)</label>
+                <input name="email" type="email" placeholder="Your digital scroll address" required>
+            </div>
+
+            <div class="input-group">
+                <label>The Nature of your Inquiry</label>
+                <select name="inquiry_type" style="padding: 10px; background: rgba(255,255,255,0.4); border: 2px solid var(--iron);">
+                    <option>Table Booking</option>
+                    <option>Custom 3D Print Request</option>
+                    <option>Trading Card Inquiry</option>
+                    <option>General Message</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Your Message</label>
+                <textarea name="message" rows="6" placeholder="Write your missive here..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Dispatch Raven</button>
+        </form>
+
+        <div class="location-info">
+            <h3 style="font-family: 'Cinzel Decorative'; color: var(--ink);">Find the Tavern</h3>
+            <p style="color: var(--ink);">Located in the heart of Totnes, Devon.</p>
+            <div class="map-placeholder">
+                [ LOCATING TAVERN IN THE MIST... ]
+            </div>
+        </div>
+    </main>
+
+    <div class="music-panel">
+        <button id="musicToggle">🔊 PLAY TAVERN AMBIENCE</button>
+        <div class="volume-container">
+            <span>VOL</span>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.5">
+        </div>
+    </div>
+
+    <audio id="tavernAudio" loop><source src="Tavern.mp3.mp3" type="audio/mpeg"></audio>
+
+    <script>
+        const audio = document.getElementById('tavernAudio');
+        const btn = document.getElementById('musicToggle');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const form = document.querySelector('.contact-form');
+        const submitBtn = document.getElementById('submitBtn');
+
+        audio.volume = 0.5;
+        btn.addEventListener('click', () => {
+            if (audio.paused) { audio.play(); btn.innerHTML = "🔇 MUTE MUSIC"; }
+            else { audio.pause(); btn.innerHTML = "🔊 PLAY TAVERN MUSIC"; }
+        });
+
+        volumeSlider.addEventListener('input', (e) => {
+            audio.volume = e.target.value;
+        });
+
+        // Submit handler: show sending state and allow the form to post to FormSubmit.co
+        form.addEventListener('submit', (e) => {
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'DISPATCHING...';
+            submitBtn.style.opacity = '0.8';
+            // Let the browser submit the form to FormSubmit.co (no preventDefault)
+            // After submission FormSubmit.co will show a confirmation page or redirect.
+        });
+    </script>
+</body>
+</html>
